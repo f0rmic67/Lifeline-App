@@ -1,0 +1,16 @@
+<resources>
+    <!-- Text resources for larger screens. Only needed when text will be different -->
+
+    <!-- Headers for Truck, Wellhead, and Stage selection
+    <string name="text_truck_number">Truck Number:</string>
+    <string name="text_wellhead_name">Wellhead Name:</string>
+    <string name="text_stage_number">Stage Number:</string>
+    -->
+
+    <!-- Headers for target depth and current depth (other telemetry items in values\strings.xml)
+    <string name="text_target_depth">Target Depth:</string>
+    <string name="text_current_depth">Current Depth:</string>
+    -->
+    <string name="text_tension">Tens.:</string>
+    <string name="text_speed">Speed:</string>
+</resources>
