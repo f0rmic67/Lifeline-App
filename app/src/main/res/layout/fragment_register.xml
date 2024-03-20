@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.RegisterFragment"
+    android:orientation="vertical"
+    android:layout_margin="@dimen/standard_margin"
+    android:background="@color/md_theme_light_onPrimary">
+
+    <!-- Back button -->
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back" />
+
+    <!-- Registration form -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Account type selection -->
+        <Spinner
+            android:id="@+id/accountTypeSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/standard_margin"
+            android:layout_marginHorizontal="@dimen/small_margin"
+            android:textAlignment="center"
+            android:textColor="@color/md_theme_light_primary"
+            android:textSize="@dimen/standard_text_size"
+            android:entries= "@array/registration_options"
+        />
+
+        <!-- Username input -->
+        <EditText
+            android:id="@+id/usernameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Username"
+            android:layout_marginBottom="@dimen/tiny_margin"
+            android:layout_marginHorizontal="@dimen/small_margin"
+            android:textSize="@dimen/standard_text_size"
+            android:inputType="text" />
+
+        <!-- Email input -->
+        <EditText
+            android:id="@+id/emailEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Your Email Address"
+            android:inputType="textEmailAddress"
+            android:layout_marginBottom="@dimen/tiny_margin"
+            android:layout_marginHorizontal="@dimen/small_margin"
+            android:textSize="@dimen/standard_text_size" />
+
+        <!-- ID number input -->
+        <EditText
+            android:id="@+id/idNumberEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="ID Number"
+            android:inputType="number"
+            android:layout_marginBottom="@dimen/tiny_margin"
+            android:layout_marginHorizontal="@dimen/small_margin"
+            android:textSize="@dimen/standard_text_size" />
+
+        <!-- Password input -->
+        <EditText
+            android:id="@+id/passwordEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:layout_marginBottom="@dimen/tiny_margin"
+            android:layout_marginHorizontal="@dimen/small_margin"
+            android:textSize="@dimen/standard_text_size" />
+
+        <!-- Re-enter password input -->
+        <EditText
+            android:id="@+id/reEnterPasswordEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Re-Enter Password"
+            android:inputType="textPassword"
+            android:layout_marginBottom="@dimen/tiny_margin"
+            android:layout_marginHorizontal="@dimen/small_margin"
+            android:textSize="@dimen/standard_text_size" />
+
+        <!-- Agreement checkbox -->
+        <CheckBox
+            android:id="@+id/agreementCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="I agree to the Terms and Conditions"
+            android:layout_marginBottom="@dimen/tiny_margin"
+            android:layout_marginHorizontal="@dimen/small_margin"
+            android:textSize="@dimen/standard_text_size" />
+
+        <!-- Register button -->
+        <Button
+            android:id="@+id/registerButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Register"
+            android:layout_marginBottom="@dimen/tiny_margin"
+            android:layout_marginHorizontal="@dimen/small_margin"
+            android:textSize="@dimen/standard_text_size" />
+
+    </LinearLayout>
+</LinearLayout>
