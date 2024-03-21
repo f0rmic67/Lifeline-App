@@ -290,11 +290,13 @@
 
         <Button
             android:id="@+id/button_save"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Save Information"
             android:textSize="@dimen/standard_text_size"
-            android:layout_alignParentBottom="true" />
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="@dimen/small_margin"/>
 
     </RelativeLayout>
 

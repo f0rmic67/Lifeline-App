@@ -1,13 +1,16 @@
 package com.lifeline.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.Spinner
+import androidx.fragment.app.Fragment
 import com.lifeline.R
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -42,6 +45,12 @@ class RegisterFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val spinner: Spinner = requireView().findViewById(R.id.accountTypeSpinner)
+        val items = resources.getStringArray(R.array.registration_options)
+        val adapter = ArrayAdapter(requireContext(), R.layout.spinner_item, items)
+        adapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
+        spinner.adapter = adapter
+
 
         val backButton = requireView().findViewById<ImageButton>(R.id.registerBackButton)
         backButton.setOnClickListener {
