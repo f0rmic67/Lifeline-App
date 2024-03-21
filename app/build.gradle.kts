@@ -35,6 +35,7 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        dataBinding = true
     }
 }
 
@@ -47,6 +48,8 @@ dependencies {
     implementation("androidx.annotation:annotation:1.7.1")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
+    implementation("androidx.fragment:fragment-ktx:1.6.2")
+
     // Text features
     implementation("com.google.mlkit:text-recognition:16.0.0")
     testImplementation("junit:junit:4.13.2")

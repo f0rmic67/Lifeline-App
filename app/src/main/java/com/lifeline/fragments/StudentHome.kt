@@ -6,6 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.lifeline.R
+import com.lifeline.databinding.FragmentStudentHomeBinding
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -22,6 +25,9 @@ class StudentHome : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    private lateinit var binding: FragmentStudentHomeBinding
+    private val viewModel by viewModels<StudentHomeViewModel>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -30,12 +36,16 @@ class StudentHome : Fragment() {
         }
     }
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_student_home, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_student_home, container, false)
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
+        return binding.root
     }
 
     companion object {

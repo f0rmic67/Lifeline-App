@@ -1,119 +1,301 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".fragments.StudentHome">
+    android:layout_margin="@dimen/standard_margin"
+    android:background="@color/md_theme_light_onPrimary">
 
-    <TextView
-        android:id="@+id/text_view_username"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Username"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"/>
+    <data>
+        <variable
+            name="viewModel"
+            type="com.lifeline.fragments.StudentHomeViewModel" />
+    </data>
 
-    <LinearLayout
-        android:id="@+id/linearLayout_search"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_below="@id/text_view_username"
-        android:padding="16dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Search Student ID Number:"
-            android:layout_gravity="center_vertical"/>
-
-        <EditText
-            android:id="@+id/edit_text_student_id"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="Enter ID Number"
-            android:inputType="number" />
-
-    </LinearLayout>
-
-    <ScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/linearLayout_search"
-        android:layout_above="@+id/button_save">
+        tools:context=".fragments.StudentHome">
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/text_view_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Username"
+            android:textSize="@dimen/title_text_size"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/small_margin"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/text_view_username"
+            android:layout_above="@+id/button_save">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Account Information"
+                    android:textSize="@dimen/header_text_size"
+                    android:textStyle="bold" />
+
+                <!-- Input fields for account information -->
+                <EditText
+                    android:id="@+id/edit_text_first_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/standard_text_size"
+                    android:hint="First Name"
+                    android:inputType="text" />
+
+                <EditText
+                    android:id="@+id/edit_text_last_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/standard_text_size"
+                    android:hint="Last Name"
+                    android:inputType="text" />
+
+                <EditText
+                    android:id="@+id/student_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/standard_text_size"
+                    android:hint="Student ID"
+                    android:inputType="number" />
+
+                <EditText
+                    android:id="@+id/edit_text_student_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Email"
+                    android:textSize="@dimen/standard_text_size"
+                    android:inputType="textEmailAddress" />
+
+                <EditText
+                    android:id="@+id/edit_text_dob"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Date of Birth"
+                    android:textSize="@dimen/standard_text_size"
+                    android:inputType="date" />
+
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Medical Information"
+                    android:textSize="@dimen/header_text_size"
+                    android:textStyle="bold"
+                    android:layout_marginTop="16dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Please check any boxes that apply and enter your information as prompted."
+                    android:textSize="@dimen/tiny_text_size"
+                    android:layout_marginTop="@dimen/small_margin" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxHeartProblems"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/standard_text_size"
+                    android:text="Heart problems"
+                    android:checked="@={viewModel.heartProblemsChecked}" />
+
+                <EditText
+                    android:id="@+id/editTextHeartProblems"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:lines="2"
+                    android:textSize="@dimen/standard_text_size"
+                    android:visibility="@{viewModel.heartProblemsChecked ? android.view.View.VISIBLE : android.view.View.GONE}" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxPacemaker"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/standard_text_size"
+                    android:text="Pacemaker"
+                    android:checked="@={viewModel.pacemakerChecked}" />
+
+                <EditText
+                    android:id="@+id/editTextPacemaker"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/standard_text_size"
+                    android:inputType="textMultiLine"
+                    android:lines="2"
+                    android:visibility="@{viewModel.pacemakerChecked ? android.view.View.VISIBLE : android.view.View.GONE}"/>
+                <CheckBox
+                    android:id="@+id/checkBoxDiabetes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/standard_text_size"
+                    android:text="Diabetes"
+                    android:checked="@={viewModel.diabetesChecked}" />
+
+                <EditText
+                    android:id="@+id/editTextDiabetes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/standard_text_size"
+                    android:inputType="textMultiLine"
+                    android:lines="2"
+                    android:visibility="@{viewModel.diabetesChecked ? android.view.View.VISIBLE : android.view.View.GONE}"/>
+                <CheckBox
+                    android:id="@+id/checkBoxHighBloodPressure"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/standard_text_size"
+                    android:text="High B/P"
+                    android:checked="@={viewModel.highBloodPressureChecked}" />
+
+                <EditText
+                    android:id="@+id/editTextHighBloodPressure"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/standard_text_size"
+                    android:inputType="textMultiLine"
+                    android:lines="2"
+                    android:visibility="@{viewModel.highBloodPressureChecked ? android.view.View.VISIBLE : android.view.View.GONE}"/>
+                <CheckBox
+                    android:id="@+id/checkboxStroke"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/standard_text_size"
+                    android:text="Stroke"
+                    android:checked="@={viewModel.strokeChecked}"/>
+
+                <EditText
+                    android:id="@+id/editTextStroke"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/standard_text_size"
+                    android:inputType="textMultiLine"
+                    android:lines="2"
+                    android:visibility="@{viewModel.strokeChecked ? android.view.View.VISIBLE : android.view.View.GONE}"/>
+                <CheckBox
+                    android:id="@+id/checkboxAsthma"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/standard_text_size"
+                    android:text="Asthma"
+                    android:checked="@={viewModel.asthmaChecked}" />
+
+                <EditText
+                    android:id="@+id/editTextAsthma"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/standard_text_size"
+                    android:inputType="textMultiLine"
+                    android:lines="2"
+                    android:visibility="@{viewModel.asthmaChecked ? android.view.View.VISIBLE : android.view.View.GONE}"/>
+                <CheckBox
+                    android:id="@+id/checkboxSeizures"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/standard_text_size"
+                    android:text="Seizures"
+                    android:checked="@={viewModel.seizuresChecked}" />
+
+                <EditText
+                    android:id="@+id/editTextSeizures"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/standard_text_size"
+                    android:inputType="textMultiLine"
+                    android:lines="2"
+                    android:visibility="@{viewModel.seizuresChecked ? android.view.View.VISIBLE : android.view.View.GONE}"/>
+
+                <CheckBox
+                    android:id="@+id/checkboxCc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/standard_text_size"
+                    android:text="Cancer"
+                    android:checked="@={viewModel.cancerChecked}" />
+
+                <EditText
+                    android:id="@+id/editTextCancer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/standard_text_size"
+                    android:inputType="textMultiLine"
+                    android:lines="2"
+                    android:visibility="@{viewModel.cancerChecked ? android.view.View.VISIBLE : android.view.View.GONE}"/>
+
+                <CheckBox
+                    android:id="@+id/checkboxOther"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/standard_text_size"
+                    android:text="Other"
+                    android:checked="@={viewModel.otherChecked}"/>
+
+                <EditText
+                    android:id="@+id/editTextOther"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/standard_text_size"
+                    android:inputType="textMultiLine"
+                    android:lines="2"
+                    android:visibility="@{viewModel.otherChecked ? android.view.View.VISIBLE : android.view.View.GONE}"/>
+
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Emergency Contact"
+                    android:textSize="@dimen/header_text_size"
+                    android:textStyle="bold"
+                    android:layout_marginTop="@dimen/small_margin" />
+
+                <EditText
+                    android:id="@+id/edit_text_emergency_first_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Emergency First Name"
+                    android:textSize="@dimen/standard_text_size"
+                    android:inputType="text" />
+
+                <EditText
+                    android:id="@+id/edit_text_emergency_last_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/standard_text_size"
+                    android:hint="Emergency Last Name"
+                    android:inputType="text" />
+
+                <EditText
+                    android:id="@+id/edit_text_emergency_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/standard_text_size"
+                    android:hint="Emergency Phone Number"
+                    android:inputType="phone" />
+
+            </LinearLayout>
+        </ScrollView>
+
+        <Button
+            android:id="@+id/button_save"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:text="Save Information"
+            android:textSize="@dimen/standard_text_size"
+            android:layout_alignParentBottom="true" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Account Information"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+    </RelativeLayout>
 
-            <!-- Input fields for account information -->
-            <EditText
-                android:id="@+id/edit_text_first_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="First Name"
-                android:inputType="text" />
-
-            <EditText
-                android:id="@+id/edit_text_last_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Last Name"
-                android:inputType="text" />
-
-            <!-- Add other input fields as needed -->
-
-            <!-- Emergency Contact information -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Emergency Contact"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:layout_marginTop="16dp" />
-
-            <EditText
-                android:id="@+id/edit_text_emergency_first_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Emergency First Name"
-                android:inputType="text" />
-
-            <EditText
-                android:id="@+id/edit_text_emergency_last_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Emergency Last Name"
-                android:inputType="text" />
-
-            <EditText
-                android:id="@+id/edit_text_emergency_phone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Emergency Phone Number"
-                android:inputType="phone" />
-
-        </LinearLayout>
-    </ScrollView>
-
-    <Button
-        android:id="@+id/button_save"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Save Information"
-        android:layout_alignParentBottom="true" />
-
-</RelativeLayout>
+</layout>
