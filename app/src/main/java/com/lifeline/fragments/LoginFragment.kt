@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageButton
 import com.lifeline.R
 
@@ -44,6 +45,10 @@ class LoginFragment : Fragment() {
         val backButton = requireView().findViewById<ImageButton>(R.id.loginBackButton)
         backButton.setOnClickListener {
             parentFragmentManager.popBackStack()
+        }
+        val loginButton = requireView().findViewById<Button>(R.id.button_perform_login)
+        loginButton.setOnClickListener {
+            navigateToFragment(StudentHome.newInstance("", ""))
         }
     }
 
