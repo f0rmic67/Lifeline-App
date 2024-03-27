@@ -49,6 +49,10 @@ class HomeFragment : Fragment() {
         registrationButton.setOnClickListener {
             navigateToFragment(RegisterFragment.newInstance("", ""))
         }
+        val scanButton = requireView().findViewById<Button>(R.id.button_search_id)
+        scanButton.setOnClickListener {
+            navigateToFragment(ScannerFragment.newInstance())
+        }
     }
 
     companion object {

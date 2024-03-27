@@ -1,8 +1,11 @@
 package com.lifeline
 
-import android.graphics.Bitmap
+import android.text.Editable
 import android.util.Log
-import android.widget.TextView
+import android.widget.EditText
+import androidx.annotation.OptIn
+import androidx.camera.core.ExperimentalGetImage
+import androidx.camera.core.ImageProxy
 import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.text.Text
 import com.google.mlkit.vision.text.TextRecognition
@@ -11,18 +14,23 @@ import java.math.BigInteger
 
 object OcrUtils {
 
-    private fun runTextRecognition(bitmap:Bitmap, textView:TextView) {
-        val image = InputImage.fromBitmap(bitmap, 0)
+    @OptIn(ExperimentalGetImage::class)
+    fun runTextRecognition(imageProxy:ImageProxy, editText:EditText) {
+        val mediaImage = imageProxy.image
+        val image = mediaImage?.let { InputImage.fromMediaImage(it, imageProxy.imageInfo.rotationDegrees) }?: return
+        imageProxy.close()
 
         val recognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS)
         recognizer.process(image)
             .addOnSuccessListener { texts ->
-                textView.text = processTextRecognitionResult(texts).toString()
-                Log.e("MainActivity", "Success")
+                val processedText = processTextRecognitionResult(texts).toString()
+                editText.text = Editable.Factory.getInstance().newEditable(processedText)
+                Log.e("OCR", "Success")
             }
             .addOnFailureListener { e -> // Task failed with an exception
-                Log.e("MainActivity", e.toString())
+                Log.e("OCR", e.toString())
             }
+
     }
     private fun processTextRecognitionResult(texts: Text): BigInteger? {
         // Get all text blocks
