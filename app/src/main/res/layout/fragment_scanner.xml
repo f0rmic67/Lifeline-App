@@ -8,13 +8,23 @@
     android:background="@color/md_theme_light_onPrimary"
     tools:context=".fragments.ScannerFragment">
 
+
+    <ImageButton
+        android:id="@+id/searchBackButton"
+        android:layout_margin="@dimen/small_margin"
+        android:layout_width="@dimen/standard_text_size"
+        android:layout_height="@dimen/standard_text_size"
+        android:background="?attr/selectableItemBackground"
+        android:src="@android:drawable/ic_menu_revert"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
     <!-- Linear Layout for Search Bar -->
     <LinearLayout
         android:id="@+id/search_layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchBackButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="@dimen/standard_margin"

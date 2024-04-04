@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -22,7 +23,6 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.lifeline.OcrUtils
 import com.lifeline.R
-import java.nio.ByteBuffer
 
 
 class ScannerFragment : Fragment() {
@@ -50,6 +50,11 @@ class ScannerFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         searchEditText = requireView().findViewById(R.id.search_edittext)
+
+        val backButton = requireView().findViewById<ImageButton>(R.id.searchBackButton)
+        backButton.setOnClickListener {
+            parentFragmentManager.popBackStack()
+        }
 
         val requestPermissionLauncher =
             registerForActivityResult(

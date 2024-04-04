@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import com.lifeline.R
 import com.lifeline.databinding.FragmentStudentHomeBinding
 import androidx.databinding.DataBindingUtil
@@ -46,6 +47,14 @@ class StudentHome : Fragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val searchButton: Button = requireView().findViewById(R.id.button_search)
+        searchButton.setOnClickListener {
+            navigateToFragment(ScannerFragment.newInstance())
+        }
     }
 
     companion object {
