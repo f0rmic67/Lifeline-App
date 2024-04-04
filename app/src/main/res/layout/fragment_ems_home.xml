@@ -3,6 +3,7 @@
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     tools:context=".fragments.EmsHome"
+    android:background="?attr/colorSurfaceVariant"
     xmlns:tools="http://schemas.android.com/tools">
     <!-- Search Button -->
     <Button
@@ -11,7 +12,7 @@
         android:layout_height="wrap_content"
         android:textSize="@dimen/small_text_size"
         android:text="Search"
-        android:textColor="@color/md_theme_light_primary"
+        android:textColor="?attr/colorPrimary"
         android:background="@android:color/transparent"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"/>
@@ -30,7 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/text_view_ems_username"
-        android:layout_above="@+id/button_save">
+        android:layout_above="@+id/button_save_ems">
 
         <LinearLayout
             android:layout_width="match_parent"
