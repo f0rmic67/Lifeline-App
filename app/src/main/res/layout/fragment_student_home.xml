@@ -276,7 +276,7 @@
                     android:id="@+id/edit_text_emergency_first_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Emergency First Name"
+                    android:hint="First Name"
                     android:textSize="@dimen/standard_text_size"
                     android:inputType="text" />
 
@@ -285,7 +285,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/standard_text_size"
-                    android:hint="Emergency Last Name"
+                    android:hint="Last Name"
                     android:inputType="text" />
 
                 <EditText
@@ -293,8 +293,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/standard_text_size"
-                    android:hint="Emergency Phone Number"
+                    android:hint="Phone Number"
                     android:inputType="phone" />
+
+                <EditText
+                    android:id="@+id/edit_text_emergency_relation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/standard_text_size"
+                    android:hint="Relation to User"
+                    android:inputType="text" />
 
             </LinearLayout>
         </ScrollView>
