@@ -6,7 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.lifecycle.lifecycleScope
+import com.lifeline.ApiUtils
 import com.lifeline.R
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -41,6 +45,8 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
         val loginButton = requireView().findViewById<Button>(R.id.button_login)
         loginButton.setOnClickListener {
             navigateToFragment(LoginFragment.newInstance("", ""))
@@ -53,6 +59,14 @@ class HomeFragment : Fragment() {
         scanButton.setOnClickListener {
             navigateToFragment(ScannerFragment.newInstance())
         }
+
+        // Start a coroutine in onViewCreated
+
+        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Main) {
+            // ApiUtils.register()
+        }
+
+
     }
 
     companion object {
