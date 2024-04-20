@@ -7,7 +7,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.lifeline.fragments.StudentHomeViewModel" />
+            type="com.lifeline.fragments.StudentFormViewModel" />
     </data>
 
 

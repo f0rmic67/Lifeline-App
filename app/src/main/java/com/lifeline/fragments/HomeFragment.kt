@@ -50,7 +50,7 @@ class HomeFragment : Fragment() {
         val registrationButton = requireView().findViewById<Button>(R.id.button_register)
         registrationButton.setOnClickListener {
             // Start a coroutine in onViewCreated
-            navigateToFragment(RegisterFragment.newInstance("", ""))
+            navigateToFragment(RegisterFragment.newInstance())
         }
         val scanButton = requireView().findViewById<Button>(R.id.button_search_id)
         scanButton.setOnClickListener {

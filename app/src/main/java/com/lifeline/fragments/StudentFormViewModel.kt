@@ -2,7 +2,7 @@ package com.lifeline.fragments
 import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.ViewModel
 
-class StudentHomeViewModel : ViewModel() {
+class StudentFormViewModel : ViewModel() {
     val heartProblemsChecked = ObservableBoolean()
     val pacemakerChecked = ObservableBoolean()
     val diabetesChecked = ObservableBoolean()

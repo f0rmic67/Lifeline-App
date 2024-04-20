@@ -6,12 +6,11 @@ import kotlinx.coroutines.withContext
 
 object ApiUtils {
 
-    suspend fun register(){
+    suspend fun register(registrationData:RegistrationData){
         val apiService: APIInterface = APIClient.client!!.create(APIInterface::class.java)
         Log.d("Ntwrk tst", "Starting...")
         withContext(Dispatchers.IO){
             // Sends getCompanies request to server and records response
-            val registrationData = RegistrationData(1, "User1", "foo@email.com", 555, "pass", "p", true)
             val response = apiService.register(registrationData)
             try {
                 // If response is successful, return the contents
