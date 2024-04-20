@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import com.lifeline.R
-import com.lifeline.databinding.FragmentStudentHomeBinding
+import com.lifeline.databinding.FragmentStudentFormBinding
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 
@@ -18,15 +18,15 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [StudentHome.newInstance] factory method to
+ * Use the [StudentForm.newInstance] factory method to
  * create an instance of this fragment.
  */
-class StudentHome : Fragment() {
+class StudentForm : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
 
-    private lateinit var binding: FragmentStudentHomeBinding
+    private lateinit var binding: FragmentStudentFormBinding
     private val viewModel by viewModels<StudentHomeViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,9 +41,9 @@ class StudentHome : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_student_home, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_student_form, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
@@ -69,7 +69,7 @@ class StudentHome : Fragment() {
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            StudentHome().apply {
+            StudentForm().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

@@ -9,7 +9,11 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.Spinner
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
+import com.lifeline.ApiUtils
 import com.lifeline.R
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -58,7 +62,9 @@ class RegisterFragment : Fragment() {
         }
         val registerButton = requireView().findViewById<Button>(R.id.registerButton)
         registerButton.setOnClickListener {
-            navigateToFragment(StudentHome.newInstance("", ""))
+            viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Main) {
+                ApiUtils.register()
+            }
         }
     }
 

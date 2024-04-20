@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <!-- ONLY PERMIT CLEARTEXT IN PROTOTYPE -->
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <!-- CHANGE CAs to the one for our custom cert when we get it -->
+            <certificates src="system"/>
+        </trust-anchors>
+    </base-config>
+</network-security-config>

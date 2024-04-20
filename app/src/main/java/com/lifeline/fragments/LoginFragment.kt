@@ -48,7 +48,7 @@ class LoginFragment : Fragment() {
         }
         val loginButton = requireView().findViewById<Button>(R.id.button_perform_login)
         loginButton.setOnClickListener {
-            navigateToFragment(StudentHome.newInstance("", ""))
+            navigateToFragment(StudentForm.newInstance("", ""))
         }
     }
 

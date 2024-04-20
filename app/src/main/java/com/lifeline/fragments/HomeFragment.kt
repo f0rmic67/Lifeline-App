@@ -6,11 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import androidx.lifecycle.lifecycleScope
-import com.lifeline.ApiUtils
 import com.lifeline.R
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -53,6 +49,7 @@ class HomeFragment : Fragment() {
         }
         val registrationButton = requireView().findViewById<Button>(R.id.button_register)
         registrationButton.setOnClickListener {
+            // Start a coroutine in onViewCreated
             navigateToFragment(RegisterFragment.newInstance("", ""))
         }
         val scanButton = requireView().findViewById<Button>(R.id.button_search_id)
@@ -60,11 +57,6 @@ class HomeFragment : Fragment() {
             navigateToFragment(ScannerFragment.newInstance())
         }
 
-        // Start a coroutine in onViewCreated
-
-        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Main) {
-            // ApiUtils.register()
-        }
 
 
     }
