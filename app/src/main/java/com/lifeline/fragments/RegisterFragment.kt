@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -16,6 +17,7 @@ import androidx.lifecycle.lifecycleScope
 import com.lifeline.ApiUtils
 import com.lifeline.R
 import com.lifeline.RegistrationData
+import com.lifeline.Response
 import com.lifeline.databinding.FragmentRegisterBinding
 import com.lifeline.databinding.FragmentStudentFormBinding
 import kotlinx.coroutines.Dispatchers
@@ -64,14 +66,32 @@ class RegisterFragment : Fragment() {
                 val registrationData = RegistrationData(accountType, viewModel.username, viewModel.email,
                     id, viewModel.password1, viewModel.password2, viewModel.agreedToTerms)
                 viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Main) {
-                    ApiUtils.register(registrationData)
+                    val serverResponse = ApiUtils.register(registrationData)
+                    val toastString = if(serverResponse == null){
+                        "No response from server"
+                    }
+                    else if(serverResponse.responseCode != Response.SUCCESS){
+                        serverResponse.message
+                    } else {
+                        when(accountType){
+                            1 -> "Registered as Student"
+                            2 -> "Registered as EMS"
+                            3 -> "Registered as EMS Admin"
+                            else -> "Registered as invalid account type"
+                        }
+                    }
+
+
+                    Toast.makeText(context, toastString, Toast.LENGTH_SHORT).show()
                 }
             }
             catch (e:java.lang.NumberFormatException){
                 Log.e("Registration", "Must Enter a valid ID")
+                Toast.makeText(context, "Must enter a valid ID", Toast.LENGTH_SHORT).show()
             }
             catch (e:Exception){
                 Log.e("Registration", "Exception: $e")
+                Toast.makeText(context, "Error when registering", Toast.LENGTH_SHORT).show()
             }
         }
     }
