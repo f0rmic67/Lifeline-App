@@ -14,11 +14,7 @@ interface APIInterface {
         ): Response<com.lifeline.Response>?
     @POST("/login")
     suspend fun login(
-        @Query("username") username: String,
-        @Query("password") password: String,
-        @Query("submit") action: String
-        ): Response<String?>? // If we get a response then the login failed
-    @GET("/test")
-    suspend fun test(): Response<com.lifeline.Response>? // If we get a response then the test failed
+        @Body loginObject:LoginData
+    ): Response<com.lifeline.Response>?
 
 }

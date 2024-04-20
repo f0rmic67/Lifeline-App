@@ -8,7 +8,7 @@ object ApiUtils {
 
     suspend fun register(registrationData:RegistrationData):Response?{
         val apiService: APIInterface = APIClient.client!!.create(APIInterface::class.java)
-        Log.d("Ntwrk tst", "Starting...")
+        Log.d("Register", "Starting...")
         return withContext(Dispatchers.IO){
             // Sends getCompanies request to server and records response
             val response = apiService.register(registrationData)
@@ -16,12 +16,12 @@ object ApiUtils {
                 // If response is successful, return the contents
                 if (response?.isSuccessful != null && response.isSuccessful) {
                     val serverResponse = response.body()
-                    Log.d("Ntwrk tst", response.body().toString())
+                    Log.d("Register", response.body().toString())
                     return@withContext serverResponse
                 }
                 // If it was not, throw an exception
                 else {
-                    Log.d("Ntwrk tst", "Response failed")
+                    Log.d("Register", "Response failed")
                     return@withContext null
                 }
             }
@@ -31,24 +31,28 @@ object ApiUtils {
             }
         }
     }
-    suspend fun login(){
+    suspend fun login(loginData:LoginData):Response?{
         val apiService: APIInterface = APIClient.client!!.create(APIInterface::class.java)
-        withContext(Dispatchers.IO){
+        Log.d("Login", "Starting...")
+        return withContext(Dispatchers.IO){
             // Sends getCompanies request to server and records response
-            val response = apiService.login("test", "TestPass1", "login")
-
+            val response = apiService.login(loginData)
             try {
                 // If response is successful, return the contents
                 if (response?.isSuccessful != null && response.isSuccessful) {
-                    Log.d("Ntwrk tst", response.body().toString())
+                    val serverResponse = response.body()
+                    Log.d("Login", response.body().toString())
+                    return@withContext serverResponse
                 }
                 // If it was not, throw an exception
                 else {
-                    Log.d("Ntwrk tst", "Response failed")
+                    Log.d("Login", "Response failed")
+                    return@withContext null
                 }
             }
             catch (e:Exception){
                 Log.e("Ntwrk tst", e.toString())
+                return@withContext null
             }
         }
     }

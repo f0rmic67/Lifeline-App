@@ -1,61 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:layout_margin="@dimen/standard_margin"
-    android:background="?attr/colorSurfaceVariant"
-    tools:context=".fragments.LoginFragment"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:layout_margin="@dimen/standard_margin">
 
-    <ImageButton
-        android:id="@+id/loginBackButton"
-        android:layout_margin="@dimen/small_margin"
-        android:layout_width="@dimen/standard_text_size"
-        android:layout_height="@dimen/standard_text_size"
-        android:background="?attr/selectableItemBackground"
-        android:src="@android:drawable/ic_menu_revert"/>
+    <data>
+        <variable
+            name="viewModel"
+            type="com.lifeline.fragments.LoginViewModel" />
+    </data>
 
-    <TextView
-        android:id="@+id/text_intro"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/standard_margin"
-        android:layout_marginHorizontal="@dimen/small_margin"
-        android:text="Login"
-        android:textAlignment="center"
-        android:textColor="?attr/colorPrimary"
-        android:textSize="@dimen/title_text_size"
-        android:textStyle="bold"/>
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="?attr/colorSurfaceVariant"
+        tools:context=".fragments.LoginFragment">
 
-    <EditText
-        android:id="@+id/editTextUserOrID"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/tiny_margin"
-        android:layout_marginHorizontal="@dimen/small_margin"
-        android:textSize="@dimen/standard_text_size"
-        android:hint="Username"
-        android:inputType="text" />
+        <ImageButton
+            android:id="@+id/loginBackButton"
+            android:layout_margin="@dimen/small_margin"
+            android:layout_width="@dimen/standard_text_size"
+            android:layout_height="@dimen/standard_text_size"
+            android:background="?attr/selectableItemBackground"
+            android:src="@android:drawable/ic_menu_revert"/>
 
-    <EditText
-        android:id="@+id/editTextPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/tiny_margin"
-        android:layout_marginHorizontal="@dimen/small_margin"
-        android:textSize="@dimen/standard_text_size"
-        android:hint="Password"
-        android:inputType="textPassword" />
+        <TextView
+            android:id="@+id/text_intro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/standard_margin"
+            android:layout_marginHorizontal="@dimen/small_margin"
+            android:text="Login"
+            android:textAlignment="center"
+            android:textColor="?attr/colorPrimary"
+            android:textSize="@dimen/title_text_size"
+            android:textStyle="bold"/>
 
-    <Button
-        android:id="@+id/button_perform_login"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/tiny_margin"
-        android:layout_marginHorizontal="@dimen/small_margin"
-        android:text="Login"
-        android:textSize="@dimen/standard_text_size" />
+        <EditText
+            android:id="@+id/editTextUserOrID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/tiny_margin"
+            android:layout_marginHorizontal="@dimen/small_margin"
+            android:textSize="@dimen/standard_text_size"
+            android:hint="Username"
+            android:text="@={viewModel.username}"
+            android:inputType="text" />
 
-</LinearLayout>
+        <EditText
+            android:id="@+id/editTextPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/tiny_margin"
+            android:layout_marginHorizontal="@dimen/small_margin"
+            android:textSize="@dimen/standard_text_size"
+            android:hint="Password"
+            android:text="@={viewModel.password}"
+            android:inputType="textPassword" />
+
+        <Button
+            android:id="@+id/button_perform_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/tiny_margin"
+            android:layout_marginHorizontal="@dimen/small_margin"
+            android:text="Login"
+            android:textSize="@dimen/standard_text_size" />
+
+    </LinearLayout>
+</layout>

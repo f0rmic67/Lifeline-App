@@ -67,22 +67,29 @@ class RegisterFragment : Fragment() {
                     id, viewModel.password1, viewModel.password2, viewModel.agreedToTerms)
                 viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Main) {
                     val serverResponse = ApiUtils.register(registrationData)
-                    val toastString = if(serverResponse == null){
-                        "No response from server"
+                    if(serverResponse == null){
+                        Toast.makeText(context, "No response from server", Toast.LENGTH_SHORT).show()
                     }
                     else if(serverResponse.responseCode != Response.SUCCESS){
-                        serverResponse.message
-                    } else {
+                        Toast.makeText(context, serverResponse.message, Toast.LENGTH_SHORT).show()
+                    }
+                    else {
                         when(accountType){
-                            1 -> "Registered as Student"
-                            2 -> "Registered as EMS"
-                            3 -> "Registered as EMS Admin"
-                            else -> "Registered as invalid account type"
+                            1 -> {
+                                "Registered as Student"
+                            }
+                            2 -> {
+                                "Registered as EMS"
+                            }
+                            3 -> {
+                                "Registered as EMS Admin"
+                            }
+                            else -> {
+                                "Registered as invalid account type"
+                            }
                         }
                     }
 
-
-                    Toast.makeText(context, toastString, Toast.LENGTH_SHORT).show()
                 }
             }
             catch (e:java.lang.NumberFormatException){
