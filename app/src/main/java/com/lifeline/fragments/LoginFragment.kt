@@ -1,7 +1,6 @@
 package com.lifeline.fragments
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,7 +15,6 @@ import com.lifeline.ApiUtils
 import com.lifeline.LoginData
 import com.lifeline.R
 import com.lifeline.databinding.FragmentLoginBinding
-import com.lifeline.databinding.FragmentRegisterBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -45,21 +43,8 @@ class LoginFragment : Fragment() {
         loginButton.setOnClickListener {
             val loginData = LoginData(viewModel.username, viewModel.password)
             viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Main) {
-                val serverResponse = ApiUtils.login(loginData)
-                if(serverResponse?.responseCode == 200){
-                    val loginMessage = when(serverResponse.message?.toInt()){
-                        1 -> "Logged in as Student"
-                        2 -> "Logged in as EMS"
-                        3 -> "Logged in as EMS Admin"
-                        else -> "Logged in as INVALID"
-                    }
-
-                    Toast.makeText(context, loginMessage, Toast.LENGTH_SHORT).show()
-                }
-                else{
-                    Log.d("Login", "${serverResponse?.message}")
-                    Toast.makeText(context, serverResponse?.message, Toast.LENGTH_SHORT).show()
-                }
+                val serverResponse = ApiUtils.login(loginData, requireContext())
+                Toast.makeText(context, serverResponse?.message, Toast.LENGTH_SHORT).show()
             }
         }
     }

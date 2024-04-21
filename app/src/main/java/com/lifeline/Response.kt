@@ -8,3 +8,5 @@ data class Response(val message: String?, val responseCode:Int){
         val CONFLICT = 409
     }
 }
+
+data class LoginResponse(val message: String?, val responseCode: Int, val token:String?)

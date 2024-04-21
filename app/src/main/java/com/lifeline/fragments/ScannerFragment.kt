@@ -21,8 +21,13 @@ import androidx.camera.view.LifecycleCameraController
 import androidx.camera.view.PreviewView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
+import com.lifeline.ApiUtils
 import com.lifeline.OcrUtils
 import com.lifeline.R
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import java.math.BigInteger
 
 
 class ScannerFragment : Fragment() {
@@ -31,7 +36,6 @@ class ScannerFragment : Fragment() {
     private lateinit var searchEditText: EditText
 
     companion object {
-        private const val ARG_TOOLBAR_TITLE = "toolbarTitle"
         fun newInstance() = ScannerFragment()
     }
 
@@ -54,6 +58,15 @@ class ScannerFragment : Fragment() {
         val backButton = requireView().findViewById<ImageButton>(R.id.searchBackButton)
         backButton.setOnClickListener {
             parentFragmentManager.popBackStack()
+        }
+
+
+        val searchButton = requireView().findViewById<Button>(R.id.search_button)
+        searchButton.setOnClickListener {
+            viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Main) {
+                val serverResponse = ApiUtils.searchStudentId(BigInteger.valueOf(1234567898675309), requireContext())
+                Toast.makeText(context, serverResponse?.message, Toast.LENGTH_SHORT).show()
+            }
         }
 
         val requestPermissionLauncher =
@@ -104,9 +117,7 @@ class ScannerFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        (requireActivity() as AppCompatActivity).supportActionBar?.let{
-            it.setDisplayHomeAsUpEnabled(true)
-        }
+        (requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     private fun startCamera() {

@@ -19,7 +19,6 @@ import com.lifeline.R
 import com.lifeline.RegistrationData
 import com.lifeline.Response
 import com.lifeline.databinding.FragmentRegisterBinding
-import com.lifeline.databinding.FragmentStudentFormBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.math.BigInteger
@@ -66,30 +65,13 @@ class RegisterFragment : Fragment() {
                 val registrationData = RegistrationData(accountType, viewModel.username, viewModel.email,
                     id, viewModel.password1, viewModel.password2, viewModel.agreedToTerms)
                 viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Main) {
-                    val serverResponse = ApiUtils.register(registrationData)
+                    val serverResponse = ApiUtils.register(registrationData, requireContext())
                     if(serverResponse == null){
                         Toast.makeText(context, "No response from server", Toast.LENGTH_SHORT).show()
                     }
                     else if(serverResponse.responseCode != Response.SUCCESS){
                         Toast.makeText(context, serverResponse.message, Toast.LENGTH_SHORT).show()
                     }
-                    else {
-                        when(accountType){
-                            1 -> {
-                                "Registered as Student"
-                            }
-                            2 -> {
-                                "Registered as EMS"
-                            }
-                            3 -> {
-                                "Registered as EMS Admin"
-                            }
-                            else -> {
-                                "Registered as invalid account type"
-                            }
-                        }
-                    }
-
                 }
             }
             catch (e:java.lang.NumberFormatException){
