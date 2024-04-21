@@ -1,6 +1,7 @@
 package com.lifeline
 
 import android.content.Context
+import java.util.Base64
 
 /**
  * Session manager to save and fetch data from SharedPreferences
@@ -35,5 +36,14 @@ object SessionManager {
     fun fetchAuthToken(context:Context): String? {
         val prefs = context.getSharedPreferences(context.getString(R.string.app_name), Context.MODE_PRIVATE)
         return prefs.getString(USER_TOKEN, null)
+    }
+    fun decodeToken(jwt: String): String {
+        val parts = jwt.split(".")
+        return try {
+            val charset = charset("UTF-8")
+            String(Base64.getUrlDecoder().decode(parts[1].toByteArray(charset)), charset)
+        } catch (e: Exception) {
+            "Error parsing JWT: $e"
+        }
     }
 }

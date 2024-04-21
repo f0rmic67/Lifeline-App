@@ -18,41 +18,86 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
 
-    <Button
-        android:id="@+id/button_search_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="SCAN ID"
-        android:textColor="@color/md_theme_light_onPrimary"
-        android:layout_marginTop="@dimen/small_margin"
-        android:textSize="@dimen/small_text_size"
-        android:background="@android:color/transparent"
-        app:layout_constraintTop_toBottomOf="@+id/text_intro"
-        app:layout_constraintStart_toEndOf="@+id/button_login" />
 
-    <Button
-        android:id="@+id/button_login"
+    <LinearLayout
+        android:id="@+id/button_holder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="LOGIN"
-        android:textColor="@color/md_theme_light_onPrimary"
-        android:textSize="@dimen/small_text_size"
-        android:backgroundTint="@android:color/transparent"
-        android:layout_marginTop="@dimen/small_margin"
-        app:layout_constraintTop_toBottomOf="@+id/text_intro"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/text_intro"
+        android:layout_marginTop="@dimen/small_margin">
+
+        <Button
+            android:id="@+id/button_logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LOGOUT"
+            android:textColor="@color/md_theme_light_onPrimary"
+            android:textSize="@dimen/small_text_size"
+            android:backgroundTint="@android:color/transparent" />
+
+        <Button
+            android:id="@+id/button_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LOGIN"
+            android:textColor="@color/md_theme_light_onPrimary"
+            android:textSize="@dimen/small_text_size"
+            android:backgroundTint="@android:color/transparent" />
+
+        <Button
+            android:id="@+id/button_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="REGISTER"
+            android:textColor="@color/md_theme_light_onPrimary"
+            android:textSize="@dimen/small_text_size"
+            android:backgroundTint="@android:color/transparent" />
+
+
+
+        <Button
+            android:id="@+id/button_update_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="UPDATE INFO"
+            android:textColor="@color/md_theme_light_onPrimary"
+            android:textSize="@dimen/small_text_size"
+            android:backgroundTint="@android:color/transparent" />
+
+        <Button
+            android:id="@+id/button_history"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HISTORY"
+            android:textColor="@color/md_theme_light_onPrimary"
+            android:textSize="@dimen/small_text_size"
+            android:backgroundTint="@android:color/transparent" />
+
+
+        <Button
+            android:id="@+id/button_search_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SCAN ID"
+            android:textColor="@color/md_theme_light_onPrimary"
+            android:textSize="@dimen/small_text_size"
+            android:background="@android:color/transparent" />
+
+    </LinearLayout>
 
     <Button
-        android:id="@+id/button_register"
-        android:layout_width="wrap_content"
+        android:id="@+id/button_ems_info"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="REGISTER"
-        android:textColor="@color/md_theme_light_onPrimary"
-        android:textSize="@dimen/small_text_size"
-        android:backgroundTint="@android:color/transparent"
-        android:layout_marginTop="@dimen/small_margin"
-        app:layout_constraintTop_toBottomOf="@+id/text_intro"
-        app:layout_constraintEnd_toStartOf="@+id/button_login" />
+        android:layout_marginHorizontal="@dimen/small_margin"
+        android:text="Upload EMS Info"
+        android:textSize="@dimen/standard_text_size"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_holder"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
