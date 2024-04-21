@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="@dimen/standard_margin"
+    android:background="?attr/colorSurfaceVariant">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.lifeline.fragments.ViewStudentInfoViewModel" />
+    </data>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragments.ViewStudentInfo">
+
+        <ImageButton
+            android:id="@+id/viewInfoBackButton"
+            android:layout_margin="@dimen/small_margin"
+            android:layout_width="@dimen/standard_text_size"
+            android:layout_height="@dimen/standard_text_size"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:background="?attr/selectableItemBackground"
+            android:src="@android:drawable/ic_menu_revert"/>
+
+        <TextView
+            android:id="@+id/text_view_username_view_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="@dimen/title_text_size"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/viewInfoBackButton"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/text_view_username_view_info">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Account Information"
+                    android:textSize="@dimen/header_text_size"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="First Name:"
+                        android:textSize="@dimen/standard_text_size"
+                        android:layout_marginEnd="@dimen/tiny_margin"/>
+
+                    <!-- Input fields for account information -->
+                    <TextView
+                        android:id="@+id/text_view_first_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/standard_text_size"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Last Name:"
+                        android:textSize="@dimen/standard_text_size"
+                        android:layout_marginEnd="@dimen/tiny_margin"/>
+                    <TextView
+                        android:id="@+id/text_view_last_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/standard_text_size"/>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/title_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Student ID:"
+                        android:textSize="@dimen/standard_text_size"
+                        android:layout_marginEnd="@dimen/tiny_margin"/>
+
+                    <TextView
+                        android:id="@+id/text_view_student_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/standard_text_size" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/title_dob"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="DOB:"
+                        android:textSize="@dimen/standard_text_size"
+                        android:layout_marginEnd="@dimen/tiny_margin"/>
+
+                    <TextView
+                        android:id="@+id/text_view_dob"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/standard_text_size" />
+                </LinearLayout>
+
+
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Emergency Contact"
+                    android:textSize="@dimen/header_text_size"
+                    android:textStyle="bold"
+                    android:layout_marginTop="@dimen/small_margin" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="First Name:"
+                        android:textSize="@dimen/standard_text_size"
+                        android:layout_marginEnd="@dimen/tiny_margin"/>
+
+                    <TextView
+                        android:id="@+id/text_view_emergency_first_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/standard_text_size" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Last Name:"
+                        android:textSize="@dimen/standard_text_size"
+                        android:layout_marginEnd="@dimen/tiny_margin"/>
+
+                    <TextView
+                        android:id="@+id/text_view_emergency_last_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/standard_text_size" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Phone Number:"
+                        android:textSize="@dimen/standard_text_size"
+                        android:layout_marginEnd="@dimen/tiny_margin"/>
+
+                    <TextView
+                        android:id="@+id/text_view_emergency_phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/standard_text_size"/>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Relation:"
+                        android:textSize="@dimen/standard_text_size"
+                        android:layout_marginEnd="@dimen/tiny_margin"/>
+
+                    <TextView
+                        android:id="@+id/text_view_emergency_relation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/standard_text_size"/>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Medical Information"
+                    android:textSize="@dimen/header_text_size"
+                    android:textStyle="bold"
+                    android:layout_marginTop="16dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/heartProblemsTitle"
+                        android:text="Heart Problems:"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/tiny_margin"
+                        android:textSize="@dimen/standard_text_size"
+                        android:visibility="@{viewModel.heartProblemsChecked ? android.view.View.VISIBLE : android.view.View.GONE}" />
+
+
+                    <TextView
+                        android:id="@+id/textViewHeartProblems"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/standard_text_size"
+                        android:visibility="@{viewModel.heartProblemsChecked ? android.view.View.VISIBLE : android.view.View.GONE}" />
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/pacemakerProblemsTitle"
+                        android:text="Pacemaker:"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/tiny_margin"
+                        android:textSize="@dimen/standard_text_size"
+                        android:visibility="@{viewModel.pacemakerChecked ? android.view.View.VISIBLE : android.view.View.GONE}" />
+
+
+                    <TextView
+                        android:id="@+id/textViewPacemaker"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/standard_text_size"
+                        android:visibility="@{viewModel.pacemakerChecked ? android.view.View.VISIBLE : android.view.View.GONE}" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/diabetesTitle"
+                        android:text="Diabetes:"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/tiny_margin"
+                        android:textSize="@dimen/standard_text_size"
+                        android:visibility="@{viewModel.diabetesChecked ? android.view.View.VISIBLE : android.view.View.GONE}" />
+
+
+                    <TextView
+                        android:id="@+id/textViewDiabetes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/standard_text_size"
+                        android:visibility="@{viewModel.diabetesChecked ? android.view.View.VISIBLE : android.view.View.GONE}" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/highBpTitle"
+                        android:text="High Blood Pressure:"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/tiny_margin"
+                        android:textSize="@dimen/standard_text_size"
+                        android:visibility="@{viewModel.highBloodPressureChecked ? android.view.View.VISIBLE : android.view.View.GONE}" />
+
+
+                    <TextView
+                        android:id="@+id/textViewHighBp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/standard_text_size"
+                        android:visibility="@{viewModel.highBloodPressureChecked ? android.view.View.VISIBLE : android.view.View.GONE}" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/strokeTitle"
+                        android:text="Strokes:"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/tiny_margin"
+                        android:textSize="@dimen/standard_text_size"
+                        android:visibility="@{viewModel.strokeChecked ? android.view.View.VISIBLE : android.view.View.GONE}" />
+
+
+                    <TextView
+                        android:id="@+id/textViewStroke"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/standard_text_size"
+                        android:visibility="@{viewModel.strokeChecked ? android.view.View.VISIBLE : android.view.View.GONE}" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/asthmaTitle"
+                        android:text="Asthma:"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/tiny_margin"
+                        android:textSize="@dimen/standard_text_size"
+                        android:visibility="@{viewModel.asthmaChecked ? android.view.View.VISIBLE : android.view.View.GONE}" />
+
+
+                    <TextView
+                        android:id="@+id/textViewAsthma"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/standard_text_size"
+                        android:visibility="@{viewModel.asthmaChecked ? android.view.View.VISIBLE : android.view.View.GONE}" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/seizuresTitle"
+                        android:text="Seizures:"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/tiny_margin"
+                        android:textSize="@dimen/standard_text_size"
+                        android:visibility="@{viewModel.seizuresChecked ? android.view.View.VISIBLE : android.view.View.GONE}" />
+
+
+                    <TextView
+                        android:id="@+id/textViewSeizures"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/standard_text_size"
+                        android:visibility="@{viewModel.seizuresChecked ? android.view.View.VISIBLE : android.view.View.GONE}" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/cancerTitle"
+                        android:text="Cancer:"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/tiny_margin"
+                        android:textSize="@dimen/standard_text_size"
+                        android:visibility="@{viewModel.cancerChecked ? android.view.View.VISIBLE : android.view.View.GONE}" />
+
+
+                    <TextView
+                        android:id="@+id/textViewCancer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/standard_text_size"
+                        android:visibility="@{viewModel.cancerChecked ? android.view.View.VISIBLE : android.view.View.GONE}" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/allergiesTitle"
+                        android:text="Allergies:"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/tiny_margin"
+                        android:textSize="@dimen/standard_text_size"
+                        android:visibility="@{viewModel.allergiesChecked ? android.view.View.VISIBLE : android.view.View.GONE}" />
+
+
+                    <TextView
+                        android:id="@+id/textViewAllergies"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/standard_text_size"
+                        android:visibility="@{viewModel.allergiesChecked ? android.view.View.VISIBLE : android.view.View.GONE}" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/otherTitle"
+                        android:text="Other:"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/tiny_margin"
+                        android:textSize="@dimen/standard_text_size"
+                        android:visibility="@{viewModel.otherChecked ? android.view.View.VISIBLE : android.view.View.GONE}" />
+
+
+                    <TextView
+                        android:id="@+id/textViewOther"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/standard_text_size"
+                        android:visibility="@{viewModel.otherChecked ? android.view.View.VISIBLE : android.view.View.GONE}" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </ScrollView>
+
+    </RelativeLayout>
+
+</layout>

@@ -21,13 +21,8 @@ import androidx.camera.view.LifecycleCameraController
 import androidx.camera.view.PreviewView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
-import com.lifeline.ApiUtils
 import com.lifeline.OcrUtils
 import com.lifeline.R
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import java.math.BigInteger
 
 
 class ScannerFragment : Fragment() {
@@ -72,11 +67,7 @@ class ScannerFragment : Fragment() {
                 -1
             }
             if(idToSearch > 0) {
-                viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Main) {
-                    val serverResponse =
-                        ApiUtils.searchStudentId(BigInteger.valueOf(idToSearch), requireContext())
-                    Log.d("Server Response", serverResponse.toString())
-                }
+                navigateToFragment(ViewStudentInfo.newInstance(idToSearch))
             }
         }
 
