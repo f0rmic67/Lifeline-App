@@ -14,6 +14,7 @@ import androidx.lifecycle.lifecycleScope
 import com.lifeline.ApiUtils
 import com.lifeline.LoginData
 import com.lifeline.R
+import com.lifeline.Response
 import com.lifeline.databinding.FragmentLoginBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -44,7 +45,15 @@ class LoginFragment : Fragment() {
             val loginData = LoginData(viewModel.username, viewModel.password)
             viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Main) {
                 val serverResponse = ApiUtils.login(loginData, requireContext())
-                Toast.makeText(context, serverResponse?.message, Toast.LENGTH_SHORT).show()
+                if(serverResponse == null){
+                    Toast.makeText(context, "No response from server", Toast.LENGTH_SHORT).show()
+                }
+                else{
+                    Toast.makeText(context, serverResponse.message, Toast.LENGTH_SHORT).show()
+                    if(serverResponse.responseCode == Response.SUCCESS){
+                        parentFragmentManager.popBackStack()
+                    }
+                }
             }
         }
     }

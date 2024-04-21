@@ -69,8 +69,11 @@ class RegisterFragment : Fragment() {
                     if(serverResponse == null){
                         Toast.makeText(context, "No response from server", Toast.LENGTH_SHORT).show()
                     }
-                    else if(serverResponse.responseCode != Response.SUCCESS){
+                    else{
                         Toast.makeText(context, serverResponse.message, Toast.LENGTH_SHORT).show()
+                        if(serverResponse.responseCode == Response.SUCCESS){
+                            parentFragmentManager.popBackStack()
+                        }
                     }
                 }
             }
