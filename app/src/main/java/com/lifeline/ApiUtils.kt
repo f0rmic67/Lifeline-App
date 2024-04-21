@@ -64,7 +64,7 @@ object ApiUtils {
             }
         }
     }
-    suspend fun searchStudentId(studentId:BigInteger, context: Context):Response?{
+    suspend fun searchStudentId(studentId:BigInteger, context: Context):StudentInfo?{
         val apiService: APIInterface = APIClient.client!!.create(APIInterface::class.java)
         return withContext(Dispatchers.IO){
             // Sends getCompanies request to server and records response

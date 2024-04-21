@@ -63,9 +63,20 @@ class ScannerFragment : Fragment() {
 
         val searchButton = requireView().findViewById<Button>(R.id.search_button)
         searchButton.setOnClickListener {
-            viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Main) {
-                val serverResponse = ApiUtils.searchStudentId(BigInteger.valueOf(1234567898675309), requireContext())
-                Toast.makeText(context, serverResponse?.message, Toast.LENGTH_SHORT).show()
+            val idToSearch =
+            try {
+                searchEditText.text.toString().toLong()
+            }
+            catch (e:Exception){
+                Toast.makeText(context, "Please enter a valid ID", Toast.LENGTH_SHORT).show()
+                -1
+            }
+            if(idToSearch > 0) {
+                viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Main) {
+                    val serverResponse =
+                        ApiUtils.searchStudentId(BigInteger.valueOf(idToSearch), requireContext())
+                    Log.d("Server Response", serverResponse.toString())
+                }
             }
         }
 

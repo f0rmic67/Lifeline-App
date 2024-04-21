@@ -22,6 +22,6 @@ interface APIInterface {
     suspend fun searchId(
         @Header("Authorization") token: String?,
         @Query("studentId") studentId:BigInteger
-    ): Response<com.lifeline.Response>?
+    ): Response<StudentInfo>?
 
 }
