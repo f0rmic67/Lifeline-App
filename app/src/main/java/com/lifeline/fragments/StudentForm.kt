@@ -12,6 +12,10 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.lifeline.ApiUtils
 import com.lifeline.SessionManager
+import com.lifeline.StudentEmergencyContact
+import com.lifeline.StudentFullName
+import com.lifeline.StudentInfo
+import com.lifeline.StudentMedicalInfo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.json.JSONObject
@@ -90,6 +94,59 @@ class StudentForm : Fragment() {
 
 
         binding.studentFormBackButton.setOnClickListener {
+            parentFragmentManager.popBackStack()
+        }
+
+        binding.buttonSave.setOnClickListener {
+            val studentId = try {
+                BigInteger.valueOf(binding.studentId.text.toString().toLong())
+            }
+            catch (e:Exception){
+                null
+            }
+            if (studentId != null) {
+                val fullName = StudentFullName(
+                    binding.editTextFirstName.text.toString(),
+                    binding.editTextLastName.text.toString()
+                )
+                val emergencyContact = StudentEmergencyContact(
+                    binding.editTextEmergencyFirstName.text.toString(),
+                    binding.editTextEmergencyLastName.text.toString(),
+                    binding.editTextEmergencyRelation.text.toString(),
+                    binding.editTextEmergencyPhone.text.toString(),
+                )
+
+                val medicalInfo = StudentMedicalInfo(
+                    studentId,
+                    studentId,
+                    binding.editTextDob.text.toString(),
+                    if (binding.checkBoxHeartProblems.isChecked) 1 else 0,
+                    binding.editTextHeartProblems.text.toString(),
+                    if (binding.checkBoxPacemaker.isChecked) 1 else 0,
+                    binding.editTextPacemaker.text.toString(),
+                    if (binding.checkBoxDiabetes.isChecked) 1 else 0,
+                    binding.editTextDiabetes.text.toString(),
+                    if (binding.checkBoxHighBloodPressure.isChecked) 1 else 0,
+                    binding.editTextHighBloodPressure.text.toString(),
+                    if (binding.checkboxStroke.isChecked) 1 else 0,
+                    binding.editTextStroke.text.toString(),
+                    if (binding.checkboxAsthma.isChecked) 1 else 0,
+                    binding.editTextAsthma.text.toString(),
+                    if (binding.checkboxSeizures.isChecked) 1 else 0,
+                    binding.editTextSeizures.text.toString(),
+                    if (binding.checkboxCancer.isChecked) 1 else 0,
+                    binding.editTextCancer.text.toString(),
+                    if (binding.checkBoxAllergies.isChecked) 1 else 0,
+                    binding.editTextAllergies.text.toString(),
+                    if (binding.checkboxOther.isChecked) 1 else 0,
+                    binding.editTextOther.text.toString()
+                )
+
+                val studentInfo = StudentInfo(fullName, emergencyContact, medicalInfo)
+                viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Main) {
+                    ApiUtils.updateStudentInfo(studentInfo, requireContext())
+                }
+            }
             parentFragmentManager.popBackStack()
         }
     }

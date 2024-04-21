@@ -18,10 +18,15 @@ interface APIInterface {
     suspend fun login(
         @Body loginObject:LoginData
     ): Response<LoginResponse>?
-    @GET("/searchStudentId")
+    @GET("/studentInfo")
     suspend fun searchId(
         @Header("Authorization") token: String?,
         @Query("studentId") studentId:BigInteger
     ): Response<StudentInfo>?
+    @POST("/studentInfo")
+    suspend fun updateStudentInfo(
+        @Header("Authorization") token: String?,
+        @Body studentInfo:StudentInfo
+    ): Response<com.lifeline.Response>?
 
 }

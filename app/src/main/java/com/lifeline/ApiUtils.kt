@@ -90,5 +90,31 @@ object ApiUtils {
             }
         }
     }
+    suspend fun updateStudentInfo(studentInfo: StudentInfo, context: Context):Response?{
+        val apiService: APIInterface = APIClient.client!!.create(APIInterface::class.java)
+        Log.d("UpdateStudentInfo", "Starting...")
+        return withContext(Dispatchers.IO){
+            val savedToken:String? = SessionManager.fetchAuthToken(context)
+            // Sends getCompanies request to server and records response
+            val response = apiService.updateStudentInfo(savedToken, studentInfo)
+            try {
+                // If response is successful, return the contents
+                if (response?.isSuccessful != null && response.isSuccessful) {
+                    val serverResponse = response.body()
+                    Log.d("UpdateStudentInfo", serverResponse?.message.toString())
+                    return@withContext serverResponse
+                }
+                // If it was not, throw an exception
+                else {
+                    Log.d("UpdateStudentInfo", "Response failed")
+                    return@withContext null
+                }
+            }
+            catch (e:Exception){
+                Log.e("Ntwrk tst", e.toString())
+                return@withContext null
+            }
+        }
+    }
 
 }

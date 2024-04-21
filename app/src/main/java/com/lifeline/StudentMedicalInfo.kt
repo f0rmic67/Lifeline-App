@@ -1,5 +1,7 @@
 package com.lifeline
 
+import java.math.BigInteger
+
 /**
  * {'id': 1,
  * 'student_id': 1,
@@ -16,8 +18,8 @@ package com.lifeline
  * 'other': 0, 'other_medications': '', 'last_update': None}
  */
 data class StudentMedicalInfo(
-    val id:Int,
-    val student_id:Int,
+    val id: BigInteger,
+    val student_id: BigInteger,
     val dob:String,
     val heart_problems:Int, val heart_problems_medications:String,
     val pacemaker:Int, val pacemaker_medications:String,
