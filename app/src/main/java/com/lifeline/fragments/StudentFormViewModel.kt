@@ -11,5 +11,6 @@ class StudentFormViewModel : ViewModel() {
     val asthmaChecked = ObservableBoolean()
     val seizuresChecked = ObservableBoolean()
     val cancerChecked = ObservableBoolean()
+    val allergiesChecked = ObservableBoolean()
     val otherChecked = ObservableBoolean()
 }

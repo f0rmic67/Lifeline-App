@@ -15,7 +15,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".fragments.StudentForm">
-        <!-- Search Button -->
+
+        <ImageButton
+            android:id="@+id/studentFormBackButton"
+            android:layout_margin="@dimen/small_margin"
+            android:layout_width="@dimen/standard_text_size"
+            android:layout_height="@dimen/standard_text_size"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:background="?attr/selectableItemBackground"
+            android:src="@android:drawable/ic_menu_revert"/>
 
         <TextView
             android:id="@+id/text_view_username"
@@ -25,8 +34,7 @@
             android:textSize="@dimen/title_text_size"
             android:textStyle="bold"
             android:layout_centerHorizontal="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="@dimen/small_margin"/>
+            android:layout_below="@id/studentFormBackButton"/>
 
         <ScrollView
             android:layout_width="match_parent"
@@ -370,7 +378,7 @@
                     android:visibility="@{viewModel.seizuresChecked ? android.view.View.VISIBLE : android.view.View.GONE}"/>
 
                 <CheckBox
-                    android:id="@+id/checkboxCc"
+                    android:id="@+id/checkboxCancer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/standard_text_size"
@@ -385,6 +393,23 @@
                     android:inputType="textMultiLine"
                     android:lines="2"
                     android:visibility="@{viewModel.cancerChecked ? android.view.View.VISIBLE : android.view.View.GONE}"/>
+
+                <CheckBox
+                    android:id="@+id/checkBoxAllergies"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/standard_text_size"
+                    android:text="Allergies"
+                    android:checked="@={viewModel.allergiesChecked}" />
+
+                <EditText
+                    android:id="@+id/editTextAllergies"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/standard_text_size"
+                    android:inputType="textMultiLine"
+                    android:lines="2"
+                    android:visibility="@{viewModel.allergiesChecked ? android.view.View.VISIBLE : android.view.View.GONE}"/>
 
                 <CheckBox
                     android:id="@+id/checkboxOther"
