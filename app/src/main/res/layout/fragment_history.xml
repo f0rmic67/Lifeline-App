@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/standard_margin"
+    android:background="?attr/colorSurfaceVariant"
+    tools:context=".fragments.History">
+
+    <ImageButton
+        android:id="@+id/historyBackButton"
+        android:layout_margin="@dimen/small_margin"
+        android:layout_width="@dimen/standard_text_size"
+        android:layout_height="@dimen/standard_text_size"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:background="?attr/selectableItemBackground"
+        android:src="@android:drawable/ic_menu_revert"/>
+
+
+
+    <TextView
+        android:id="@+id/history_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recent Searches"
+        android:textSize="@dimen/title_text_size"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/historyBackButton"/>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/history_title"
+        android:layout_margin="@dimen/small_margin"
+        android:id="@+id/history_list"/>
+
+</RelativeLayout>

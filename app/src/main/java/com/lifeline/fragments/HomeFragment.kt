@@ -1,19 +1,13 @@
 package com.lifeline.fragments
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.Toast
-import androidx.lifecycle.lifecycleScope
-import com.lifeline.ApiUtils
 import com.lifeline.R
 import com.lifeline.SessionManager
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import org.json.JSONObject
 
 class HomeFragment : Fragment() {
@@ -64,17 +58,7 @@ class HomeFragment : Fragment() {
 
 
         buttonHistory.setOnClickListener {
-            // Start a coroutine in onViewCreated
-            viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Main) {
-                val serverResponse = ApiUtils.getRecentSearches(requireContext())
-                if(serverResponse == null){
-                    Toast.makeText(context, "No response from server", Toast.LENGTH_SHORT).show()
-                }
-                else{
-                    Toast.makeText(context, "$serverResponse", Toast.LENGTH_LONG).show()
-                    Log.d("History", "$serverResponse")
-                }
-            }
+            navigateToFragment(History.newInstance())
         }
 
 
