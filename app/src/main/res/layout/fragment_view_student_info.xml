@@ -219,6 +219,8 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/title_medical_info"
+                    android:visibility="gone"
                     android:text="Medical Information"
                     android:textSize="@dimen/header_text_size"
                     android:textStyle="bold"
@@ -463,6 +465,15 @@
             </LinearLayout>
         </ScrollView>
 
+        <Button
+            android:id="@+id/button_exit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Exit"
+            android:textSize="@dimen/standard_text_size"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="@dimen/small_margin"/>
     </RelativeLayout>
 
 </layout>

@@ -65,6 +65,7 @@ class ViewStudentInfo : Fragment() {
                 binding.textViewEmergencyPhone.text = studentData?.emergency_contact?.phone_number
 
                 if(studentData?.medical_info != null) {
+                    binding.titleMedicalInfo.visibility = View.VISIBLE
 
                     viewModel.heartProblemsChecked.set(studentData.medical_info.heart_problems == 1)
                     viewModel.pacemakerChecked.set(studentData.medical_info.pacemaker == 1)
@@ -99,7 +100,10 @@ class ViewStudentInfo : Fragment() {
             parentFragmentManager.popBackStack()
         }
 
-
+        binding.buttonExit.setOnClickListener {
+            parentFragmentManager.popBackStack() // THIS MAKES IT SO THAT YOU CAN'T CALL
+            parentFragmentManager.popBackStack()
+        }
         binding.viewInfoBackButton.setOnClickListener {
             parentFragmentManager.popBackStack()
         }

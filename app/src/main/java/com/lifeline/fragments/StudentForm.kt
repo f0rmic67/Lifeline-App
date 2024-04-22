@@ -92,6 +92,9 @@ class StudentForm : Fragment() {
             parentFragmentManager.popBackStack()
         }
 
+        binding.studentId.isFocusable = false
+        binding.studentId.isClickable = false
+        binding.studentId.isCursorVisible = false
 
         binding.studentFormBackButton.setOnClickListener {
             parentFragmentManager.popBackStack()
