@@ -12,9 +12,9 @@ object ApiUtils {
         val apiService: APIInterface = APIClient.client!!.create(APIInterface::class.java)
         Log.d("Register", "Starting...")
         return withContext(Dispatchers.IO){
-            // Sends getCompanies request to server and records response
-            val response = apiService.register(registrationData)
             try {
+                // Sends getCompanies request to server and records response
+                val response = apiService.register(registrationData)
                 // If response is successful, return the contents
                 if (response?.isSuccessful != null && response.isSuccessful) {
                     val serverResponse = response.body()
@@ -40,9 +40,9 @@ object ApiUtils {
         val apiService: APIInterface = APIClient.client!!.create(APIInterface::class.java)
         Log.d("Login", "Starting...")
         return withContext(Dispatchers.IO){
-            // Sends getCompanies request to server and records response
-            val response = apiService.login(loginData)
             try {
+                // Sends getCompanies request to server and records response
+                val response = apiService.login(loginData)
                 // If response is successful, return the contents
                 if (response?.isSuccessful != null && response.isSuccessful) {
                     val serverResponse = response.body()
@@ -67,11 +67,11 @@ object ApiUtils {
     suspend fun searchStudentId(studentId:BigInteger, context: Context):StudentInfo?{
         val apiService: APIInterface = APIClient.client!!.create(APIInterface::class.java)
         return withContext(Dispatchers.IO){
-            // Sends getCompanies request to server and records response
-            val savedToken:String? = SessionManager.fetchAuthToken(context)
-            Log.d("Search ID", "Using saved token $savedToken")
-            val response = apiService.searchId(savedToken, studentId)
             try {
+                // Sends getCompanies request to server and records response
+                val savedToken:String? = SessionManager.fetchAuthToken(context)
+                Log.d("Search ID", "Using saved token $savedToken")
+                val response = apiService.searchId(savedToken, studentId)
                 // If response is successful, return the contents
                 if (response?.isSuccessful != null && response.isSuccessful) {
                     val serverResponse = response.body()
@@ -94,10 +94,10 @@ object ApiUtils {
         val apiService: APIInterface = APIClient.client!!.create(APIInterface::class.java)
         Log.d("UpdateStudentInfo", "Starting...")
         return withContext(Dispatchers.IO){
-            val savedToken:String? = SessionManager.fetchAuthToken(context)
-            // Sends getCompanies request to server and records response
-            val response = apiService.updateStudentInfo(savedToken, studentInfo)
             try {
+                val savedToken:String? = SessionManager.fetchAuthToken(context)
+                // Sends getCompanies request to server and records response
+                val response = apiService.updateStudentInfo(savedToken, studentInfo)
                 // If response is successful, return the contents
                 if (response?.isSuccessful != null && response.isSuccessful) {
                     val serverResponse = response.body()
@@ -121,10 +121,10 @@ object ApiUtils {
         val apiService: APIInterface = APIClient.client!!.create(APIInterface::class.java)
         return withContext(Dispatchers.IO){
             // Sends getCompanies request to server and records response
-            val savedToken:String? = SessionManager.fetchAuthToken(context)
-            Log.d("Recent Searches", "Using saved token $savedToken")
-            val response = apiService.getRecentSearches(savedToken)
             try {
+                val savedToken:String? = SessionManager.fetchAuthToken(context)
+                Log.d("Recent Searches", "Using saved token $savedToken")
+                val response = apiService.getRecentSearches(savedToken)
                 // If response is successful, return the contents
                 if (response?.isSuccessful != null && response.isSuccessful) {
                     val serverResponse = response.body()
