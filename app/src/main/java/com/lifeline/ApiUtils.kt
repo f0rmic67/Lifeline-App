@@ -117,4 +117,31 @@ object ApiUtils {
         }
     }
 
+    suspend fun getRecentSearches(context: Context):List<SearchData>?{
+        val apiService: APIInterface = APIClient.client!!.create(APIInterface::class.java)
+        return withContext(Dispatchers.IO){
+            // Sends getCompanies request to server and records response
+            val savedToken:String? = SessionManager.fetchAuthToken(context)
+            Log.d("Recent Searches", "Using saved token $savedToken")
+            val response = apiService.getRecentSearches(savedToken)
+            try {
+                // If response is successful, return the contents
+                if (response?.isSuccessful != null && response.isSuccessful) {
+                    val serverResponse = response.body()
+                    Log.d("Recent Searches", response.body().toString())
+                    return@withContext serverResponse
+                }
+                // If it was not, throw an exception
+                else {
+                    Log.d("Recent Searches", "Response failed")
+                    return@withContext null
+                }
+            }
+            catch (e:Exception){
+                Log.e("Recent Searches", e.toString())
+                return@withContext null
+            }
+        }
+    }
+
 }

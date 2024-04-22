@@ -29,4 +29,9 @@ interface APIInterface {
         @Body studentInfo:StudentInfo
     ): Response<com.lifeline.Response>?
 
+    @GET("/recentSearches")
+    suspend fun getRecentSearches(
+        @Header("Authorization") token:String?
+    ): Response<List<SearchData>>?
+
 }
