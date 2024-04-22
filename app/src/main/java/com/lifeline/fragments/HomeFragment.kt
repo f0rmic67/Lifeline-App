@@ -18,7 +18,6 @@ class HomeFragment : Fragment() {
     private lateinit var updateInfoButton:Button
     private lateinit var buttonHistory:Button
     private lateinit var scanButton:Button
-    private lateinit var uploadEmsInfo:Button
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -35,7 +34,6 @@ class HomeFragment : Fragment() {
         updateInfoButton = requireView().findViewById(R.id.button_update_info)
         buttonHistory = requireView().findViewById(R.id.button_history)
         scanButton = requireView().findViewById(R.id.button_search_id)
-        uploadEmsInfo = requireView().findViewById(R.id.button_ems_info)
 
         updateUI()
 
@@ -81,7 +79,6 @@ class HomeFragment : Fragment() {
         registrationButton.visibility = if(accountType == null)  View.VISIBLE else View.GONE
         updateInfoButton.visibility = if(accountType == 1)  View.VISIBLE else View.GONE
         buttonHistory.visibility = if(accountType == 2 || accountType == 3)  View.VISIBLE else View.GONE
-        uploadEmsInfo.visibility = if(accountType == 3)  View.VISIBLE else View.GONE
     }
 
     companion object {
