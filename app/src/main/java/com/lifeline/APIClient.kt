@@ -9,7 +9,7 @@ object APIClient {
     val client: Retrofit?
         get() {
             retrofit = Retrofit.Builder()
-                .baseUrl("https://lifeline-project.net:5000/")
+                .baseUrl("https://lifeline-project.net:5000/") // Lifeline's url
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
             return retrofit
